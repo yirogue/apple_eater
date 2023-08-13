@@ -60,7 +60,7 @@ def export_notes(user, password="", directory="notes/"):
     data_path = create_directory(directory, "raw_data/")
     lib_dir = f"/Users/{user}/Library/Group Containers/group.com.apple.notes/NoteStore.sqlite"
     exports = notes.get_metadata(lib_dir, password)
-    notes.save_raw_data(notes, os.path.join(data_path, "notes_data.csv"))
+    notes.save_raw_data(exports, os.path.join(data_path, "notes_data.csv"))
     for index in exports.index:
         notes.create_md_file(exports.loc[index], directory)
     print(f"Exported {len(exports)} notes successfully from Apple Notes.")
